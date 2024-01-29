@@ -34,5 +34,5 @@ fatal: unable to access 'https://github.com/cz0729zc/PA-ysyx.git/': Failed to co
 
 问题二：[解决方法](https://blog.csdn.net/qq_40748967/article/details/122040610)
 
-问题三：[解决方法]([解决 Github port 443 : Timed out - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/636418854))
+问题三：[解决方法](https://zhuanlan.zhihu.com/p/636418854)
 
