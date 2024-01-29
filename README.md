@@ -18,9 +18,21 @@
 E: 无法修正错误，因为您要求某些软件包保持现状，就是它们破坏了软件包间的依赖关系。
 ~~~
 
+3.使用git clone远端仓库时出现以下问题
+
+```
+$  Git clone https://github.com/cz0729zc/PA-ysyx.git
+Cloning into 'PA-ysyx'...
+fatal: unable to access 'https://github.com/cz0729zc/PA-ysyx.git/': Failed to connect to github.com port 443 after 21088 ms: Couldn't connect to server
+```
+
+
+
 ### 解决方法及原因
 
 问题一：[解决方法](https://blog.csdn.net/renrenxu/article/details/82725659)
 
 问题二：[解决方法](https://blog.csdn.net/qq_40748967/article/details/122040610)
+
+问题三：[解决方法]([解决 Github port 443 : Timed out - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/636418854))
 
