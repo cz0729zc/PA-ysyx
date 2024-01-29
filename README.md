@@ -4,7 +4,7 @@
 
 ### 总体
 
-将Linux安装在虚拟机中，系统为**ubuntu-22.04.3-desktop-amd64**，并且成功配置清华源，安装相应软件,[学习了github](https://zhuanlan.zhihu.com/p/369486197)以及git，和vim[的使用方法]([精通 VIM ，此文就够了 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/68111471))
+将Linux安装在虚拟机中，系统为**ubuntu-22.04.3-desktop-amd64**，并且成功配置清华源，安装相应软件,[学习了github](https://zhuanlan.zhihu.com/p/369486197)以及[git](https://blog.csdn.net/qq_37772475/article/details/107140061)，和vim[的使用方法](https://zhuanlan.zhihu.com/p/68111471)
 
 ### 问题
 
@@ -26,7 +26,7 @@ Cloning into 'PA-ysyx'...
 fatal: unable to access 'https://github.com/cz0729zc/PA-ysyx.git/': Failed to connect to github.com port 443 after 21088 ms: Couldn't connect to server
 ```
 
-
+4.对git branch 之间的关系有了更深入的了解：在分支下创建文件后，需要对其add和commit。
 
 ### 解决方法及原因
 
@@ -36,3 +36,4 @@ fatal: unable to access 'https://github.com/cz0729zc/PA-ysyx.git/': Failed to co
 
 问题三：[解决方法](https://zhuanlan.zhihu.com/p/636418854)
 
+问题四：[解决方法](https://zhuanlan.zhihu.com/p/410255613)
