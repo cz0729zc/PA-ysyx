@@ -2,6 +2,8 @@
 
 ## Day1
 
+（2024.1.29）
+
 ### 总体
 
 将Linux安装在虚拟机中，系统为**ubuntu-22.04.3-desktop-amd64**，并且成功配置清华源，安装相应软件,[学习了github](https://zhuanlan.zhihu.com/p/369486197)以及[git](https://blog.csdn.net/qq_37772475/article/details/107140061)，和vim[的使用方法](https://zhuanlan.zhihu.com/p/68111471)
