@@ -1,4 +1,4 @@
-# PA-学习日志
+# PA-ysyx-学习日志
 
 ## Day1
 
@@ -255,5 +255,111 @@ gtkwave counter_test.lxt    //打开波形文件，可以在图形化界面中�
 
 ## Day9
 
+### 总结
 
+系统了解了makefile相关语法及其命令，在examples/Mytest/test3目录下，参考[文章一]()，并成功实现FPGA模拟开发板使用，要将项目的目录设置为环境变量NVBOARD_HOME，可以按照以下步骤操作：
 
+1. 打开终端窗口。
+
+2. 使用以下命令找到项目的目录路径：
+
+   ```
+   cd nvboard
+   pwd
+   ```
+
+3. 将项目的目录路径添加到环境变量NVBOARD_HOME中，可以通过编辑~/.bashrc文件（或者~/.bash_profile文件）来实现。使用以下命令打开~/.bashrc文件：
+
+   ```
+   nano ~/.bashrc
+   ```
+
+4. 在文件末尾添加以下行，将项目的目录路径替换为实际路径：
+
+   ```
+   export NVBOARD_HOME=/path/to/nvboard
+   ```
+
+5. 使用Ctrl + X保存并退出文件。
+
+6. 使用以下命令使更改生效：
+
+   ```
+   source ~/.bashrc
+   ```
+
+7. 确保环境变量已经设置成功，可以使用以下命令检查：
+
+   ```
+   echo $NVBOARD_HOME
+   ```
+
+## Day10
+
+### 总结
+
+今天将vim中的代码自动补全插件安装成功，大致熟悉了nvboard中的example框架，正在学习FPGA的基本语法。
+
+[文章一](https://blog.csdn.net/lgyLGY35/article/details/113930618)
+
+## Day11
+
+### 总结
+
+今天成功依照样例代码，编写出了led流水灯和拨片开关，并且将verilog_OJ刷了一些基础题，理解了verilater的基础编程
+![image-20240229154727527](C:\Users\32734\AppData\Roaming\Typora\typora-user-images\image-20240229154727527.png)
+
+**激励代码**通常指的是在硬件描述语言（如Verilog）中用于仿真的测试激励。让我们来详细探讨一下：
+
+**激励代码是什么意思**
+
+1. **Verilog 仿真激励**：
+
+   - 在数字电路设计中，我们使用硬件描述语言（HDL）如Verilog来描述电路的行为和结构。
+   - 仿真激励是一种用于验证设计的测试方法。它允许我们在没有实际硬件的情况下模拟电路的功能。
+   - **Testbench** 是一个Verilog文件，用于生成仿真激励信号，以对设计进行仿真测试。
+   - Testbench 包含信号声明、激励生成和模块实例化等部分。
+   - 通过编写合适的 testbench，我们可以模拟输入信号并对设计进行仿真，以确保其正常工作。
+
+2. **激励的具体含义**：
+
+   - 在Verilog中，激励是指为设计提供输入信号的数据或者行为模型。
+   - 例如，如果你编写了一个代码，在时钟上升沿时让某个变量 `a` 加1，但没有实际时钟源，你就需要为这段代码添加激励。这个激励相当于你所需的时钟信号，使得代码能够产生相应的输出，例如观察 `a` 是否加1。
+
+3. **Testbench 示例**：
+
+   - 下面是一个简单的Verilog模块和对应的testbench示例：
+
+     ```verilog
+     // 一个 2bit 数据拼接成 8bit 数据的功能模块
+     module data_consolidation (
+         input clk,
+         input rstn,
+         input [1:0] din, // 数据输入
+         input din_en,    // 数据输入使能
+         output [7:0] dout, // 数据输出
+         output dout_en    // 数据输出使能
+     );
+     // ... 模块功能实现 ...
+     
+     // 对应的 testbench
+     module test;
+         reg clk;
+         reg rstn;
+         reg [1:0] din;
+         reg din_en;
+         wire [7:0] dout;
+         wire dout_en;
+     
+         // ... 时钟和复位生成 ...
+     
+         // 从文件读取数据并生成激励
+         // ...
+     endmodule
+     ```
+
+   - 在testbench中，我们可以模拟输入信号，例如从文件读取数据，并将其作为激励信号输入到被测试的设计中。
+
+总之，激励代码是为了验证设计的正确性而编写的测试信号，它在仿真中起到关键作用
+
+​              [如何查看波形](https://blog.csdn.net/qq_41763108/article/details/127965316)

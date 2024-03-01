@@ -85,3 +85,5 @@
 83.   git fsck
 
 详细请看：[文章一](https://zhuanlan.zhihu.com/p/389814854)，[文章二](https://blog.csdn.net/qtiao/article/details/97783243)
+
+vim详细命令请看：[文章三](https://zhuanlan.zhihu.com/p/155973403)
