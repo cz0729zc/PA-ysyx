@@ -257,7 +257,7 @@ gtkwave counter_test.lxt    //打开波形文件，可以在图形化界面中�
 
 ### 总结
 
-系统了解了makefile相关语法及其命令，在examples/Mytest/test3目录下，参考[文章一]()，并成功实现FPGA模拟开发板使用，要将项目的目录设置为环境变量NVBOARD_HOME，可以按照以下步骤操作：
+系统了解了**[makefile](https://blog.csdn.net/qq_66197674/article/details/139365933#:~:text=Makefile%20%E6%98%AF)**相关语法及其命令，在examples/Mytest/test3目录下，参考[文章一]()，并成功实现FPGA模拟开发板使用，要将项目的目录设置为环境变量NVBOARD_HOME，可以按照以下步骤操作：
 
 1. 打开终端窗口。
 
@@ -368,4 +368,66 @@ gtkwave counter_test.lxt    //打开波形文件，可以在图形化界面中�
 
 ### 总结
 
-今天开始pa2的正式学习，
+今天开始pa2的正式学习，今天在调试pa1.2的时候遇到处理负号的时候出现如下bug
+~~~c
+(nemu) p --1
+[src/monitor/sdb/expr.c:189 make_token] match rules[5] = "-" at position 0 with len 1: -
+[src/monitor/sdb/expr.c:189 make_token] match rules[5] = "-" at position 1 with len 1: -
+[src/monitor/sdb/expr.c:189 make_token] match rules[3] = "[0-9]+" at position 2 with len 1: 1
+Entering eval with p=0, q=2
+Entering eval with p=0, q=-1
+~~~
+
+调试bug发现q的值竟然是负数
+
+~~~c
+// 更新 tokens 的数量 
+for(int j = 0;j < tokens_len; j ++){ 
+    if(tokens[j].type == TK_NOTYPE)
+    {
+      for(int k = j+1; k < tokens_len;k ++){
+        tokens[k - 1] = tokens[k];
+      }
+      tokens_len --;
+      nr_token--;   //全局变量也要减
+    }
+}
+~~~
+
+
+
+## Day13 
+
+### 总结
+
+今天成功调试成功代码，完成pa2.1阶段，
+~~~shell
+zc@zc-virtual-machine:~/ics2022/am-kernels/tests/cpu-tests$ make ARCH=riscv32-nemu ALL=dummy run
+# Building dummy-run [riscv32-nemu]
+# Building am-archive [riscv32-nemu]
++ CC src/platform/nemu/trm.c
++ AR -> build/am-riscv32-nemu.a
+# Building klib-archive [riscv32-nemu]
++ LD -> build/dummy-riscv32-nemu.elf
+# Creating image [riscv32-nemu]
++ OBJCOPY -> build/dummy-riscv32-nemu.bin
++ LD /home/zc/ics2022/nemu/build/riscv32-nemu-interpreter
+[src/utils/log.c:28 init_log] Log is written to /home/zc/ics2022/am-kernels/tests/cpu-tests/build/nemu-log.txt
+c[src/memory/paddr.c:56 init_mem] physical memory area [0x80000000, 0x87ffffff]
+[src/monitor/monitor.c:61 load_img] The image is /home/zc/ics2022/am-kernels/tests/cpu-tests/build/dummy-riscv32-nemu.bin, size = 57
+[src/monitor/monitor.c:28 welcome] Trace: ON
+[src/monitor/monitor.c:29 welcome] If trace is enabled, a log file will be generated to record the trace. This may lead to a large log file. If it is not necessary, you can disable it in menuconfig
+[src/monitor/monitor.c:32 welcome] Build time: 16:01:58, Sep 19 2024
+Welcome to riscv32-NEMU!
+For help, type "help"
+[src/monitor/monitor.c:35 welcome] Exercise: Please remove me in the source code and compile NEMU again.
+(nemu) c
+[src/cpu/cpu-exec.c:121 cpu_exec] nemu: HIT GOOD TRAP at pc = 0x80000030
+[src/cpu/cpu-exec.c:89 statistic] host time spent = 2,058 us
+[src/cpu/cpu-exec.c:90 statistic] total guest instructions = 13
+[src/cpu/cpu-exec.c:91 statistic] simulation frequency = 6,316 inst/s
+(nemu) q
+ dummy
+[         dummy] PASS!
+~~~
+
