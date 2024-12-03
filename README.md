@@ -134,7 +134,20 @@ vim /etc/ssh/sshd_config
 
 2.[文章二](https://zhuanlan.zhihu.com/p/58006202)
 
- 
+3.[新增方法](https://gitclone.com)：使用国内镜像
+
+**或者使用全局参数，更改 git 参数**
+
+~~~shell
+git config --global url."https://https://githubclone.com/github.com/".insteadOf "https://github.com/"
+~~~
+
+使用全局参数更改以后，使用 **vim ~/.gitconfig** 命令即可查看当前的配置文件，看到以下配置。
+
+~~~
+[url "https://https://githubclone.com/github.com/"]
+        insteadOf = https://github.com/
+~~~
 
 ## Day5
 
